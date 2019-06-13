@@ -11,7 +11,7 @@ jobs:
           command: packer version
       - run:
           name: Validate Packer Build File
-          command: packer validate ./build.json
+          command: packer validate ./packer/build.json
   build-image:
     docker:
       - image: hashicorp/packer:1.1.1
@@ -22,7 +22,7 @@ jobs:
           at: ~/packer
       - run:
           name: Build Packer Image
-          command: packer build ./build.json
+          command: packer build ./packer/build.json
       - store_artifacts:
           path: manifest-snowflake.json
 workflows:
